@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Pan Card Genuine Detector</title>
+
+  <!-- Materialize CSS -->
+  <link href="{{ url_for('static', filename='css/materialize.min.css') }}" rel="stylesheet" media="screen,projection"/>
+</head>
+
+<body style="background-color: #7a642c;"> <!-- Change the color code as needed -->
+  <form action='/' method="post" class="col s12" enctype="multipart/form-data">
+    <div class="section no-pad-bot" id="index-banner">
+      <div class="container">
+        <div class="row">
+          <div class="col s12">
+            <h1 class="header center orange-text">Pan Card Genuine Detector</h1>
+
+            <div class="row">
+              <div class="input-field col s3">
+              </div>
+
+              <div class="input-field col s5" style="margin-left: 20px; margin-top: 100px">
+                <div class="row">
+                  <label for="first_name"><b>Upload Pan Card Image</b></label><br>
+                  <div class="file-field input-field">
+                    <div class="btn" style="background-color: #e4d25e">
+                      <span>Browse</span>
+                      <input type="file" name="file_upload" id="file_upload" />
+                    </div>
+                    <div class="file-path-wrapper">
+                      <input class="file-path validate" type="text" placeholder="Upload file" name="file_name" id="file_name" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row center">
+              <button type="submit" class="btn-large" style="background-color: #ed440769">Check</button>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; padding-top: 50px">
+          <h5>{{pred}}</h5>
+        </div>
+
+        <!-- Image and Credits -->
+        <div class="container">
+          <div class="row">
+            <div class="col s12 center">
+              <img src="{{ url_for('static', filename='PAN-Card-frauds.png') }}" style="width: 100%; max-width: 400px; margin-top: 20px;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Materialize JS -->
+    <script src="{{ url_for('static', filename='js/materialize.min.js') }}"></script>
+    <script type="text/javascript">
+      document.getElementById('file_upload').onchange = function () {
+        document.getElementById('file_name').value = this.value.slice(12, 100);
+      };
+    </script>
+  </form>
+</body>
+</html>
